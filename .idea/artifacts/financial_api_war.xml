@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="financial-api:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>financial-api</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="financial-api-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="financial-api:war exploded" />
+    </root>
+  </artifact>
+</component>

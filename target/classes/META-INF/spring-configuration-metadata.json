@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "financial",
+      "type": "com.financial.api.config.property.FinancialApiProperty",
+      "sourceType": "com.financial.api.config.property.FinancialApiProperty"
+    },
+    {
+      "name": "financial.mail",
+      "type": "com.financial.api.config.property.FinancialApiProperty$Mail",
+      "sourceType": "com.financial.api.config.property.FinancialApiProperty",
+      "sourceMethod": "getMail()"
+    },
+    {
+      "name": "financial.s3",
+      "type": "com.financial.api.config.property.FinancialApiProperty$S3",
+      "sourceType": "com.financial.api.config.property.FinancialApiProperty",
+      "sourceMethod": "getS3()"
+    },
+    {
+      "name": "financial.seguranca",
+      "type": "com.financial.api.config.property.FinancialApiProperty$Seguranca",
+      "sourceType": "com.financial.api.config.property.FinancialApiProperty",
+      "sourceMethod": "getSeguranca()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "financial.origin-permitida",
+      "type": "java.lang.String",
+      "sourceType": "com.financial.api.config.property.FinancialApiProperty",
+      "defaultValue": "http:\/\/localhost:8000"
+    }
+  ],
+  "hints": []
+}
