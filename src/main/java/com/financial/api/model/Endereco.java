@@ -1,5 +1,6 @@
 package com.financial.api.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @Embeddable
+@Builder
 public class Endereco {
 
 	private String logradouro;

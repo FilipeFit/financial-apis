@@ -12,33 +12,36 @@ import java.util.Optional;
 @Service
 public class PessoaService {
 
-    @Autowired
-    private PessoaRepository pessoaRepository;
+  private final PessoaRepository pessoaRepository;
 
-    public Pessoa salvar(Pessoa pessoa) {
-        pessoa.getContatos().forEach(c -> c.setPessoa(pessoa));
-        return pessoaRepository.save(pessoa);
-    }
+  public PessoaService(PessoaRepository pessoaRepository) {
+    this.pessoaRepository = pessoaRepository;
+  }
 
-    public Pessoa atualizar(Long codigo, Pessoa pessoa) {
-        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+  public Pessoa salvar(Pessoa pessoa) {
+    pessoa.getContatos().forEach(c -> c.setPessoa(pessoa));
+    return pessoaRepository.save(pessoa);
+  }
 
-        pessoaSalva.getContatos().clear();
-        pessoaSalva.getContatos().addAll(pessoa.getContatos());
-        pessoaSalva.getContatos().forEach(c -> c.setPessoa(pessoaSalva));
+  public Pessoa atualizar(Long codigo, Pessoa pessoa) {
+    Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
 
-        BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo", "contatos");
-        return pessoaRepository.save(pessoaSalva);
-    }
+    pessoaSalva.getContatos().clear();
+    pessoaSalva.getContatos().addAll(pessoa.getContatos());
+    pessoaSalva.getContatos().forEach(c -> c.setPessoa(pessoaSalva));
 
-    public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
-        Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
-        pessoaSalva.setAtivo(ativo);
-        pessoaRepository.save(pessoaSalva);
-    }
+    BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo", "contatos");
+    return pessoaRepository.save(pessoaSalva);
+  }
 
-    public Pessoa buscarPessoaPeloCodigo(Long codigo) {
-        Optional<Pessoa> pessoaSalva = pessoaRepository.findById(codigo);
-        return pessoaSalva.orElseThrow(() -> new EmptyResultDataAccessException(1));
-    }
+  public void atualizarPropriedadeAtivo(Long codigo, Boolean ativo) {
+    Pessoa pessoaSalva = buscarPessoaPeloCodigo(codigo);
+    pessoaSalva.setAtivo(ativo);
+    pessoaRepository.save(pessoaSalva);
+  }
+
+  public Pessoa buscarPessoaPeloCodigo(Long codigo) {
+    Optional<Pessoa> pessoaSalva = pessoaRepository.findById(codigo);
+    return pessoaSalva.orElseThrow(() -> new EmptyResultDataAccessException(1));
+  }
 }
