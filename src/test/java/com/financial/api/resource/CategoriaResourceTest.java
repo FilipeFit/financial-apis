@@ -6,7 +6,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import com.financial.api.model.Categoria;
 import com.financial.api.repository.CategoriaRepository;
@@ -16,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
@@ -54,7 +52,7 @@ public class CategoriaResourceTest {
   public void testMockMVC() throws Exception {
     MockMvc mockMvc = MockMvcBuilders.standaloneSetup(categoriaResource).build();
 
-    mockMvc.perform(get("/categorias")).andExpect(status().isOk()).andExpect();
+    mockMvc.perform(get("/categorias")).andExpect(status().isOk());
   }
 
   @Test
